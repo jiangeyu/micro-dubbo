@@ -1,1 +1,8 @@
 micro-dubbo/
+
+.idea/*
+*.iml
+target
+target/
+*.logworkspace.xml
+.idea/workspace.xml
