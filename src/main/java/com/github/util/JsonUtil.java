@@ -1,4 +1,4 @@
-package com.github.protocol;
+package com.github.util;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
