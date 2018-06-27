@@ -9,6 +9,6 @@ import com.github.client.RemoteFuture;
  */
 public interface AsyncObjectProxy {
 
-    public RemoteFuture call(String name, Object... args);
+    RemoteFuture call(String name, Object... args);
 
 }
