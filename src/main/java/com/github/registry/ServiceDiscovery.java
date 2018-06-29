@@ -8,6 +8,7 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
@@ -26,12 +27,22 @@ public class ServiceDiscovery {
 
     private ZooKeeper zk;
 
+    private volatile List<String> dataList = new ArrayList<>();
+
+
+    public ServiceDiscovery(String registryAddress) {
+        this.registryAddress = registryAddress;
+        zk = connectServer();
+        if (zk != null) {
+            watchNode(zk);
+        }
+    }
 
     private ZooKeeper connectServer() {
         ZooKeeper zooKeeper = null;
         try {
             zooKeeper = new ZooKeeper(registryAddress, RegistryContants.ZK_SESSION_TIMEOUT, event -> {
-                if(event.getState() == Watcher.Event.KeeperState.SyncConnected) {
+                if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
                     countDownLatch.countDown();
                 }
             });
@@ -49,7 +60,7 @@ public class ServiceDiscovery {
             List<String> nodeList = zk.getChildren(RegistryContants.ZK_REGISTRY_PATH, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
-                    if(event.getType() == Event.EventType.NodeChildrenChanged) {
+                    if (event.getType() == Event.EventType.NodeChildrenChanged) {
                         watchNode(zk);
                     }
                 }
@@ -65,6 +76,8 @@ public class ServiceDiscovery {
                 }
                 return new String(bytes);
             }).collect(Collectors.toList());
+            this.dataList = dataList;
+            updateConnectServer();
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -73,6 +86,6 @@ public class ServiceDiscovery {
     }
 
     private void updateConnectServer() {
-
+        ConnectionManager.getInstance().updateConnectServer(this.dataList);
     }
 }
