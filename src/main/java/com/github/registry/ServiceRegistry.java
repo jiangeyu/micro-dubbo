@@ -39,12 +39,9 @@ public class ServiceRegistry {
     private ZooKeeper connectServer() {
         ZooKeeper zooKeeper = null;
         try {
-            zooKeeper = new ZooKeeper(serverAddress, RegistryContants.ZK_SESSION_TIMEOUT, new Watcher() {
-                @Override
-                public void process(WatchedEvent event) {
-                    if(event.getState() == Event.KeeperState.SyncConnected) {
-                    countDownLatch.countDown();
-                    }
+            zooKeeper = new ZooKeeper(serverAddress, RegistryContants.ZK_SESSION_TIMEOUT, event -> {
+                if(event.getState() == Watcher.Event.KeeperState.SyncConnected) {
+                countDownLatch.countDown();
                 }
             });
             countDownLatch.await();
