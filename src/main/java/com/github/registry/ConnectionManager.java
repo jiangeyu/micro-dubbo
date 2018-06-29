@@ -5,12 +5,15 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 
 import java.net.InetSocketAddress;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
@@ -42,6 +45,27 @@ public class ConnectionManager {
     }
 
     public void updateConnectServer(List<String> allServerAddress) {
+        if (allServerAddress != null && allServerAddress.isEmpty()) {
+            Set<InetSocketAddress> nodeSet = allServerAddress.stream()
+                    .map(serverAddress -> {
+                        String[] address = serverAddress.split(":");
+                        InetSocketAddress inetSocketAddress;
+                        if (address.length == 2) {
+                            int port = Integer.parseInt(address[1]);
+                            inetSocketAddress = new InetSocketAddress(address[0], port);
+                        } else {
+                            inetSocketAddress = null;
+                        }
+                        return inetSocketAddress;
+                    })
+                    .collect(Collectors.toSet());
+
+            nodeSet.stream().forEach(node -> connectServerNode(node));
+
+        }
+    }
+
+    public void connectServerNode(InetSocketAddress address) {
 
     }
 }
