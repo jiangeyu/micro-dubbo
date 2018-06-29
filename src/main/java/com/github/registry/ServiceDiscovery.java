@@ -38,7 +38,7 @@ public class ServiceDiscovery {
         }
     }
 
-    private ZooKeeper connectServer() {
+    public ZooKeeper connectServer() {
         ZooKeeper zooKeeper = null;
         try {
             zooKeeper = new ZooKeeper(registryAddress, RegistryContants.ZK_SESSION_TIMEOUT, event -> {
@@ -55,7 +55,7 @@ public class ServiceDiscovery {
         return zooKeeper;
     }
 
-    private void watchNode(ZooKeeper zk) {
+    public void watchNode(ZooKeeper zk) {
         try {
             List<String> nodeList = zk.getChildren(RegistryContants.ZK_REGISTRY_PATH, new Watcher() {
                 @Override
@@ -85,7 +85,7 @@ public class ServiceDiscovery {
         }
     }
 
-    private void updateConnectServer() {
+    public void updateConnectServer() {
         ConnectionManager.getInstance().updateConnectServer(this.dataList);
     }
 }

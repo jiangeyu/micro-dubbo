@@ -1,3 +1,4 @@
+import com.github.registry.ServiceDiscovery;
 import com.github.registry.ServiceRegistry;
 import org.junit.Test;
 
@@ -12,5 +13,9 @@ public class ZookeeperTest {
     public void zookeeperRegistryTest() {
         ServiceRegistry registry = new ServiceRegistry("127.0.0.1:2181");
         registry.registry("myZookeeper");
+
+        ServiceDiscovery serviceDiscovery = new ServiceDiscovery("127.0.0.1:2181");
+        serviceDiscovery.connectServer();
+
     }
 }
