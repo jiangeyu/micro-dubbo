@@ -44,7 +44,7 @@ public class ConnectionManager {
     private long connectTimeoutMills = 6000;
 
     private AtomicInteger roundRobin = new AtomicInteger(0);
-    
+
     private volatile boolean isRunning = true;
 
     public static ConnectionManager getInstance() {
@@ -144,7 +144,7 @@ public class ConnectionManager {
         }
     }
 
-    public RemoteClientHandler closeHandler() {
+    public RemoteClientHandler chooseHandler() {
         int size = connectHandlers.size();
         while (isRunning && size <= 0) {
             try {

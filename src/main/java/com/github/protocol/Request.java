@@ -29,7 +29,7 @@ public class Request {
 
     private static final AtomicLong INVOKE_ID = new AtomicLong(0);
 
-    private static Long newId() {
+    public static Long newId() {
         return INVOKE_ID.getAndIncrement();
     }
 
