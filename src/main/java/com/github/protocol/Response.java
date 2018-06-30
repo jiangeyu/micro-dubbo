@@ -2,6 +2,7 @@ package com.github.protocol;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
@@ -10,6 +11,7 @@ import lombok.Data;
  */
 @Builder
 @Data
+@NoArgsConstructor
 public class Response {
 
     /**
@@ -19,5 +21,5 @@ public class Response {
 
     private String error;
 
-    private String result;
+    private Object result;
 }

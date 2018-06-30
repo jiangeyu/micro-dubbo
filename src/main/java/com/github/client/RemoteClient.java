@@ -1,6 +1,7 @@
 package com.github.client;
 
 import com.github.client.proxy.ObjectProxy;
+import com.github.registry.ConnectionManager;
 import com.github.registry.ServiceDiscovery;
 import lombok.Builder;
 import lombok.Data;
@@ -40,5 +41,7 @@ public class RemoteClient {
 
     public void stop() {
         threadPoolExecutor.shutdown();
+        serviceDiscovery.stop();
+        ConnectionManager.getInstance().stop();
     }
 }

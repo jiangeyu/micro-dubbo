@@ -88,4 +88,14 @@ public class ServiceDiscovery {
     public void updateConnectServer() {
         ConnectionManager.getInstance().updateConnectServer(this.dataList);
     }
+
+    public void stop() {
+        if(zk != null) {
+            try {
+                zk.close();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
