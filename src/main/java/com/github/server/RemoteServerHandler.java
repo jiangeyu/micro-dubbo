@@ -29,7 +29,7 @@ public class RemoteServerHandler extends SimpleChannelInboundHandler<Request> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Request request) throws Exception {
         RemoteServer.submit(() -> {
-            Response response = new Response();
+            Response response =  Response.builder().build();
             response.setRequestId(request.getRequestId());
             try {
                 Object result = handleCglib(request);
