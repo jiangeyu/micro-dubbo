@@ -75,7 +75,11 @@ public class RemoteServerHandler extends SimpleChannelInboundHandler<Request> {
         Method method = serviceClass.getMethod(methodName, parameterTypes);
         method.setAccessible(true);
         return  method.invoke(serviceBean, parameters);
+    }
 
-
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        log.error("server caught exception");
+        ctx.close();
     }
 }

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ed6da52-0201-4fd0-bbd8-c95fcd94f1e4" name="Default" comment="服务发现实现">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/client/RemoteClientInitializerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/code/RpcDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/code/RpcEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/registry/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/registry/ConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/util/SerializationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/util/SerializationUtil.java" afterDir="false" />
+    <list default="true" id="2ed6da52-0201-4fd0-bbd8-c95fcd94f1e4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/client/RemoteClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/client/RemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/protocol/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/protocol/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/registry/ServiceDiscovery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/registry/ServiceDiscovery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/server/RemoteServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/server/RemoteServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/server/RemoteServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/server/RemoteServerHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,52 +18,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/registry/ConnectionManager.java">
+      <file leaf-file-name="RemoteServerHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/server/RemoteServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+            <state relative-caret-position="798">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RpcEncoder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/code/RpcEncoder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#431#432#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RpcDecoder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/code/RpcDecoder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#421#422#0" expanded="true" />
-                <element signature="e#455#456#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RemoteClientInitializerHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/client/RemoteClientInitializerHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#468#469#0" expanded="true" />
+                <element signature="e#512#513#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,20 +50,16 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/github/client/AsyncObjectProxy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/annotation/RemoteService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/server/RemoteServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/protocol/Response.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/client/proxy/AsyncObjectProxy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/client/AsyncRemoteCallback.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/protocol/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/client/RemoteFuture.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/client/RemoteClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/client/proxy/ObjectProxy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/annotation/Test2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/annotation/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/constant/RegistryContants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/registry/ServiceRegistry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/registry/ServiceDiscovery.java" />
         <option value="$PROJECT_DIR$/src/test/java/ZookeeperTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/client/RemoteClientHandler.java" />
@@ -112,6 +70,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/code/RpcDecoder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/code/RpcEncoder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/client/RemoteClientInitializerHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/registry/ServiceDiscovery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/client/RemoteClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/protocol/Response.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/server/RemoteServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/server/RemoteServerHandler.java" />
       </list>
     </option>
   </component>
@@ -189,6 +152,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="github" type="462c0819:PsiDirectoryNode" />
+              <item name="annotation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="micro-dubbo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="micro-dubbo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -198,7 +170,44 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="github" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="proxy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="micro-dubbo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="micro-dubbo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="micro-dubbo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="micro-dubbo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
+              <item name="constant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="micro-dubbo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="micro-dubbo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
+              <item name="registry" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="micro-dubbo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="micro-dubbo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="micro-dubbo" type="b2602c69:ProjectViewProjectNode" />
@@ -378,7 +387,7 @@
       <workItem from="1530153165523" duration="5716000" />
       <workItem from="1530196040133" duration="3895000" />
       <workItem from="1530264393422" duration="6469000" />
-      <workItem from="1530318650097" duration="7359000" />
+      <workItem from="1530318650097" duration="11126000" />
     </task>
     <task id="LOCAL-00001" summary="添加spring配置">
       <created>1530069004469</created>
@@ -457,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1530320674492</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="请求编码解码实现">
+      <created>1530326927168</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1530326927168</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -481,7 +497,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39383000" />
+    <option name="totallyTimeSpent" value="43150000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -536,7 +552,8 @@
     <MESSAGE value="连接管理实现" />
     <MESSAGE value="添加guava依赖" />
     <MESSAGE value="客户端handler实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="客户端handler实现" />
+    <MESSAGE value="请求编码解码实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="请求编码解码实现" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/registry/ServiceRegistry.java">
@@ -557,37 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/util/JsonUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/server/RemoteServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/server/RemoteServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/protocol/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/protocol/Request.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -602,13 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/client/proxy/ObjectProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -744,16 +723,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/annotation/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/annotation/Test.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/annotation/Test2.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/client/RemoteClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/zookeeper/zookeeper/3.4.8/zookeeper-3.4.8.jar!/org/apache/zookeeper/ZooKeeper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -800,30 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/registry/ServiceDiscovery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2807#2808#0" expanded="true" />
-            <element signature="e#2889#2890#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/registry/ServiceRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#596#597#0" expanded="true" />
-            <element signature="e#646#647#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -901,16 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/client/RemoteClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/util/SerializationUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
@@ -950,6 +885,98 @@
           <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/client/RemoteClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/client/proxy/ObjectProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/registry/ServiceRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#646#647#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/registry/ServiceDiscovery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2804#2805#0" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/util/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/client/RemoteClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/protocol/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/server/RemoteServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="110" column="50" selection-start-line="110" selection-start-column="50" selection-end-line="110" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1703#2003#0" expanded="true" />
+            <element signature="e#2002#2003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/server/RemoteServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
           </folding>
         </state>
       </provider>
