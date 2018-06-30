@@ -1,9 +1,9 @@
 package com.github.client;
 
+import com.github.client.proxy.AsyncObjectProxy;
 import com.github.client.proxy.ObjectProxy;
 import com.github.registry.ConnectionManager;
 import com.github.registry.ServiceDiscovery;
-import lombok.Builder;
 import lombok.Data;
 
 import java.lang.reflect.Proxy;
@@ -17,22 +17,30 @@ import java.util.concurrent.TimeUnit;
  * @desc
  */
 @Data
-@Builder
 public class RemoteClient {
 
     private String serverAddress;
 
     private ServiceDiscovery serviceDiscovery;
 
+    public RemoteClient(ServiceDiscovery serviceDiscovery) {
+        this.serviceDiscovery = serviceDiscovery;
+    }
+
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
             600L, TimeUnit.SECONDS, new ArrayBlockingQueue<>(1024));
 
+    @SuppressWarnings("unchecked")
     public static <T> T create(Class<T> interfaceClass) {
         return (T) Proxy.newProxyInstance(
                 interfaceClass.getClassLoader(),
                 new Class<?>[]{interfaceClass},
                 new ObjectProxy<>(interfaceClass)
         );
+    }
+
+    public static <T> AsyncObjectProxy createAsyns(Class<T> clazz) {
+       return new ObjectProxy<>(clazz);
     }
 
     public static void submit(Runnable task) {

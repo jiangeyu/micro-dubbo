@@ -13,7 +13,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.BeansException;
@@ -30,7 +29,6 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @time: Created in 上午10:56 2018/6/27
  * @desc
  */
-@Builder
 @Data
 public class RemoteServer implements ApplicationContextAware, InitializingBean {
 
@@ -46,6 +44,10 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
 
     private EventLoopGroup workGroup = null;
 
+    public RemoteServer(String serverAddress, ServiceRegistry serviceRegistry) {
+        this.serverAddress = serverAddress;
+        this.serviceRegistry = serviceRegistry;
+    }
 
     @Override
     public void afterPropertiesSet() throws Exception {

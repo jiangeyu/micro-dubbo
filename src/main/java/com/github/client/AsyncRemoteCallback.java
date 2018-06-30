@@ -12,7 +12,7 @@ public interface AsyncRemoteCallback {
      *
      * @param result
      */
-    void succcess(Object result);
+    void success(Object result);
 
     /**
      * 异步回调失败
