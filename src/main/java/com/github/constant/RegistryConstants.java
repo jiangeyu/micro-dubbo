@@ -5,7 +5,7 @@ package com.github.constant;
  * @time: Created in 下午11:08 2018/6/28
  * @desc
  */
-public class RegistryContants {
+public class RegistryConstants {
 
     public static int ZK_SESSION_TIMEOUT = 5000;
 

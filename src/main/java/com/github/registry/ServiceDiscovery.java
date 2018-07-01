@@ -1,6 +1,6 @@
 package com.github.registry;
 
-import com.github.constant.RegistryContants;
+import com.github.constant.RegistryConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
@@ -41,7 +41,7 @@ public class ServiceDiscovery {
     public ZooKeeper connectServer() {
         ZooKeeper zooKeeper = null;
         try {
-            zooKeeper = new ZooKeeper(registryAddress, RegistryContants.ZK_SESSION_TIMEOUT, event -> {
+            zooKeeper = new ZooKeeper(registryAddress, RegistryConstants.ZK_SESSION_TIMEOUT, event -> {
                 if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
                     countDownLatch.countDown();
                 }
@@ -57,7 +57,7 @@ public class ServiceDiscovery {
 
     public void watchNode(ZooKeeper zk) {
         try {
-            List<String> nodeList = zk.getChildren(RegistryContants.ZK_REGISTRY_PATH, new Watcher() {
+            List<String> nodeList = zk.getChildren(RegistryConstants.ZK_REGISTRY_PATH, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
                     if (event.getType() == Event.EventType.NodeChildrenChanged) {
@@ -68,7 +68,7 @@ public class ServiceDiscovery {
             List<String> dataList = nodeList.stream().map(data -> {
                 byte[] bytes = new byte[0];
                 try {
-                    bytes = zk.getData(RegistryContants.ZK_REGISTRY_PATH + "/" + data, false, null);
+                    bytes = zk.getData(RegistryConstants.ZK_REGISTRY_PATH + "/" + data, false, null);
                 } catch (KeeperException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {

@@ -1,6 +1,6 @@
 package com.github.registry;
 
-import com.github.constant.RegistryContants;
+import com.github.constant.RegistryConstants;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.*;
@@ -39,7 +39,7 @@ public class ServiceRegistry {
     private ZooKeeper connectServer() {
         ZooKeeper zooKeeper = null;
         try {
-            zooKeeper = new ZooKeeper(serverAddress, RegistryContants.ZK_SESSION_TIMEOUT, event -> {
+            zooKeeper = new ZooKeeper(serverAddress, RegistryConstants.ZK_SESSION_TIMEOUT, event -> {
                 if(event.getState() == Watcher.Event.KeeperState.SyncConnected) {
                 countDownLatch.countDown();
                 }
@@ -55,9 +55,9 @@ public class ServiceRegistry {
 
     public void addRootNode(ZooKeeper zk) {
         try {
-            Stat stat = zk.exists(RegistryContants.ZK_REGISTRY_PATH, false);
+            Stat stat = zk.exists(RegistryConstants.ZK_REGISTRY_PATH, false);
             if(stat == null) {
-                zk.create(RegistryContants.ZK_REGISTRY_PATH, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                zk.create(RegistryConstants.ZK_REGISTRY_PATH, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             }
         } catch (KeeperException e) {
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class ServiceRegistry {
     public void createNode(ZooKeeper zk, String data) {
         byte[] bytes = data.getBytes();
         try {
-            String path = zk.create(RegistryContants.ZK_REGISTRY_PATH, bytes,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+            String path = zk.create(RegistryConstants.ZK_REGISTRY_PATH, bytes,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
             log.info("create zookeeper node ({} => {})", path, data);
         } catch (KeeperException e) {
             e.printStackTrace();
