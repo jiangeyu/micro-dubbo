@@ -1,5 +1,6 @@
 import com.github.registry.ServiceDiscovery;
 import com.github.registry.ServiceRegistry;
+import org.apache.zookeeper.ZooKeeper;
 import org.junit.Test;
 
 /**
@@ -12,10 +13,15 @@ public class ZookeeperTest {
     @Test
     public void zookeeperRegistryTest() {
         ServiceRegistry registry = new ServiceRegistry("127.0.0.1:2181");
-        registry.registry("myZookeeper");
+        ZooKeeper zk = registry.registry("myZookeeper");
+        registry.addRootNode(zk);
+        registry.createNode(zk, "micro-dubbo");
 
         ServiceDiscovery serviceDiscovery = new ServiceDiscovery("127.0.0.1:2181");
-        serviceDiscovery.connectServer();
+        ZooKeeper zk2 = serviceDiscovery.connectServer();
+
+        serviceDiscovery.watchNode(zk);
+        serviceDiscovery.watchNode(zk2);
 
     }
 }

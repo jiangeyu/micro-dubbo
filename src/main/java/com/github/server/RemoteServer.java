@@ -9,9 +9,12 @@ import com.github.registry.ServiceRegistry;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import lombok.Data;
 import org.apache.commons.collections4.MapUtils;
@@ -43,6 +46,10 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
     private EventLoopGroup bossGroup = null;
 
     private EventLoopGroup workGroup = null;
+
+    public RemoteServer() {
+
+    }
 
     public RemoteServer(String serverAddress, ServiceRegistry serviceRegistry) {
         this.serverAddress = serverAddress;
@@ -83,7 +90,7 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
     }
 
     public RemoteServer addService(String interfaceName, Object serviceBean) {
-        if(!beanMap.containsKey(serviceBean)) {
+        if (!beanMap.containsKey(serviceBean)) {
             beanMap.put(interfaceName, serviceBean);
         }
         return this;
@@ -95,6 +102,7 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
             workGroup = new NioEventLoopGroup();
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workGroup)
+                    .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
@@ -104,10 +112,13 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
                                     .addLast(new RpcDecoder(Response.class))
                                     .addLast(new RemoteServerHandler(beanMap));
                         }
-                    });
+                    })
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);
+
             String[] address = serverAddress.split(":");
             ChannelFuture future = bootstrap.bind(address[0], Integer.parseInt(address[1]));
-            if(serviceRegistry != null) {
+            if (serviceRegistry != null) {
                 serviceRegistry.registry(serverAddress);
             }
             future.channel().closeFuture().sync();

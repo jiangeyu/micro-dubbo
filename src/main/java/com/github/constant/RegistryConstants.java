@@ -7,7 +7,7 @@ package com.github.constant;
  */
 public class RegistryConstants {
 
-    public static int ZK_SESSION_TIMEOUT = 5000;
+    public static int ZK_SESSION_TIMEOUT = 50000;
 
     public static String ZK_REGISTRY_PATH = "/registry";
 

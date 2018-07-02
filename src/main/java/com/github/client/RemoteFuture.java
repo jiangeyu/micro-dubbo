@@ -116,6 +116,13 @@ public class RemoteFuture implements Future<Object> {
 
     private void runCallback(final AsyncRemoteCallback callback) {
         final Response response = this.response;
+        RemoteClient.submit(() -> {
+            if(response.getError() == null) {
+                callback.success(response.getRequestId());
+            } else {
+                callback.fail(new RuntimeException("response error", new Throwable(response.getError())));
+            }
+        });
     }
 
 

@@ -30,6 +30,13 @@ public class RemoteClient {
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
             600L, TimeUnit.SECONDS, new ArrayBlockingQueue<>(1024));
 
+    /**
+     * 创建远程代理类
+     *
+     * @param interfaceClass
+     * @param <T>
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public static <T> T create(Class<T> interfaceClass) {
         return (T) Proxy.newProxyInstance(
