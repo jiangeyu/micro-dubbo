@@ -32,6 +32,14 @@ public class SerializationUtil {
         return schema;
     }
 
+    /**
+     * 对象序列化
+     *
+     * @param object
+     * @param <T>
+     * @return
+     */
+
     public static <T> byte[] serialize(T object) {
         Class<T> clazz = (Class<T>) object.getClass();
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
@@ -46,6 +54,14 @@ public class SerializationUtil {
 
     }
 
+    /**
+     * 对象反序列化
+     *
+     * @param data
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     public static <T> T deserialize(byte[] data, Class<T> clazz) {
         try {
             T message = objenesis.newInstance(clazz);

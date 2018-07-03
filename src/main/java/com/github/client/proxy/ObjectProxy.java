@@ -13,8 +13,9 @@ import java.util.stream.IntStream;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 上午11:06 2018/6/27
- * @desc
+ * @desc 远程代理类
  */
+
 @Slf4j
 public class ObjectProxy<T> implements AsyncObjectProxy, InvocationHandler {
 
