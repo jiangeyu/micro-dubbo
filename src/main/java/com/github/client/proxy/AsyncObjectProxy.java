@@ -9,6 +9,13 @@ import com.github.client.RemoteFuture;
  */
 public interface AsyncObjectProxy {
 
+    /**
+     * 获取远程接口执行结果
+     *
+     * @param name
+     * @param args
+     * @return
+     */
     RemoteFuture call(String name, Object... args);
 
 }

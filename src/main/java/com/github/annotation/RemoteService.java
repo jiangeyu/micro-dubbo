@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 上午10:57 2018/6/27
- * @desc
+ * @desc 服务接口注解
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
