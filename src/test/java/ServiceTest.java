@@ -69,6 +69,7 @@ public class ServiceTest {
         remoteServer.addService("hello", "world");
         AsyncObjectProxy helloService = rpcClient.createAsyns(HelloService.class);
         RemoteFuture result = helloService.call("hello", "World");
+        System.out.println(result.get());
         Assert.assertEquals("Hello! World", result.get());
     }
 

@@ -133,7 +133,6 @@ public class RemoteFuture implements Future<Object> {
 
         @Override
         protected boolean tryAcquire(int acquire) {
-            assert acquire == 1;
             if (compareAndSetState(0, 1)) {
                 setExclusiveOwnerThread(Thread.currentThread());
                 return true;
@@ -143,7 +142,6 @@ public class RemoteFuture implements Future<Object> {
 
         @Override
         protected boolean tryRelease(int releases) {
-            assert releases == 1;
             if (getState() == 0) {
                 throw new IllegalMonitorStateException();
             }
