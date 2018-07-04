@@ -8,6 +8,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
@@ -15,12 +16,13 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
  * @desc
  */
 public class RemoteClientInitializerHandler extends ChannelInitializer<SocketChannel> {
+
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
+        pipeline.addLast(new LengthFieldPrepender(4));
         pipeline.addLast(new RpcEncoder(Request.class));
         pipeline.addLast(new RpcDecoder(Response.class));
-        pipeline.addLast(new LengthFieldBasedFrameDecoder(65535,0,4,0,0));
         pipeline.addLast(new RemoteClientHandler());
     }
 }

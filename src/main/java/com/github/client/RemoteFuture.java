@@ -44,7 +44,7 @@ public class RemoteFuture implements Future<Object> {
     }
 
     @Override
-    public Object get() throws InterruptedException, ExecutionException {
+    public Object get() {
         sync.acquire(-1);
         if (this.response != null) {
             return this.response.getResult();

@@ -4,6 +4,7 @@ import com.github.client.RemoteClientHandler;
 import com.github.client.RemoteClientInitializerHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -57,7 +58,7 @@ public class ConnectionManager {
     }
 
     public void updateConnectServer(List<String> allServerAddress) {
-        if (allServerAddress != null && allServerAddress.isEmpty()) {
+        if (allServerAddress != null && allServerAddress.size() > 0) {
             Set<InetSocketAddress> nodeSet = allServerAddress.stream()
                     .map(serverAddress -> {
                         String[] address = serverAddress.split(":");
@@ -111,10 +112,14 @@ public class ConnectionManager {
             bootstrap.group(eventLoopGroup)
                     .channel(NioSocketChannel.class)
                     .handler(new RemoteClientInitializerHandler());
+
             ChannelFuture channelFuture = bootstrap.connect(address);
-            channelFuture.addListener(future -> {
-                RemoteClientHandler handler = channelFuture.channel().pipeline().get(RemoteClientHandler.class);
-                addHandler(handler);
+
+            channelFuture.addListener((ChannelFutureListener) future -> {
+                if(future.isSuccess()) {
+                    RemoteClientHandler handler = future.channel().pipeline().get(RemoteClientHandler.class);
+                    addHandler(handler);
+                }
             });
         });
     }

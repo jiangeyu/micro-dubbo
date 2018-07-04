@@ -27,12 +27,16 @@ public class RpcDecoder extends ByteToMessageDecoder {
         }
         in.markReaderIndex();
         int length = in.readInt();
+        if (length < 0) {
+            ctx.close();
+        }
         if(in.readableBytes() < length) {
             in.resetReaderIndex();
             return;
         }
         byte[] data = new byte[length];
         in.readBytes(data);
+
         Object object = SerializationUtil.deserialize(data, clazz);
         out.add(object);
     }

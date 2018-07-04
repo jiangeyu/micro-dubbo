@@ -69,6 +69,7 @@ public class SerializationUtil {
             ProtostuffIOUtil.mergeFrom(data, message, schema);
             return message;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new IllegalStateException(e.getMessage(), e);
         }
     }

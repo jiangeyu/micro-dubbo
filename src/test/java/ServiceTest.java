@@ -1,6 +1,7 @@
 import com.github.client.RemoteClient;
 import com.github.client.RemoteFuture;
 import com.github.client.proxy.AsyncObjectProxy;
+import com.github.server.RemoteServer;
 import com.github.service.HelloService;
 import com.github.service.Person;
 import com.github.service.PersonService;
@@ -24,12 +25,17 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class ServiceTest {
 
     @Autowired
-    private RemoteClient rpcClient;
+     private RemoteClient rpcClient;
+    @Autowired
+     private RemoteServer remoteServer;
+
 
     @Test
     public void helloTest1() {
+        remoteServer.start();
         HelloService helloService = rpcClient.create(HelloService.class);
         String result = helloService.hello("World");
+        System.out.println(result + "------------------------");
         Assert.assertEquals("Hello! World", result);
     }
 
@@ -59,6 +65,8 @@ public class ServiceTest {
 
     @Test
     public void helloFutureTest1() throws ExecutionException, InterruptedException {
+        remoteServer.start();
+        remoteServer.addService("hello", "world");
         AsyncObjectProxy helloService = rpcClient.createAsyns(HelloService.class);
         RemoteFuture result = helloService.call("hello", "World");
         Assert.assertEquals("Hello! World", result.get());

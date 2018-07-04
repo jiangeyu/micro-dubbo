@@ -92,6 +92,8 @@ public class ObjectProxy<T> implements AsyncObjectProxy, InvocationHandler {
                 return Double.TYPE;
             case "java.lang.Character":
                 return Character.TYPE;
+            case "java.lang.String":
+                return Character.TYPE;
             case "java.lang.Boolean":
                 return Boolean.TYPE;
             case "java.lang.Short":

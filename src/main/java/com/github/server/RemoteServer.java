@@ -14,12 +14,12 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import lombok.Data;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -47,10 +47,7 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
 
     private EventLoopGroup workGroup = null;
 
-    public RemoteServer() {
-
-    }
-
+    @Autowired
     public RemoteServer(String serverAddress, ServiceRegistry serviceRegistry) {
         this.serverAddress = serverAddress;
         this.serviceRegistry = serviceRegistry;
@@ -66,7 +63,7 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
         Map<String, Object> serviceBeanMap = applicationContext.getBeansWithAnnotation(RemoteService.class);
         if (MapUtils.isNotEmpty(serviceBeanMap)) {
             serviceBeanMap.values().stream().forEach(serviceBean -> {
-                String interfaceName = serviceBeanMap.getClass().getAnnotation(RemoteService.class).value().getName();
+                String interfaceName = serviceBean.getClass().getAnnotation(RemoteService.class).value().getName();
                 beanMap.put(interfaceName, serviceBean);
             });
         }
@@ -96,7 +93,7 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
         return this;
     }
 
-    public void start() throws InterruptedException {
+    public void start() {
         if (bossGroup == null && workGroup == null) {
             bossGroup = new NioEventLoopGroup();
             workGroup = new NioEventLoopGroup();
@@ -107,9 +104,9 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline()
-                                    .addLast(new LengthFieldBasedFrameDecoder(65535, 0, 4, 0, 0))
-                                    .addLast(new RpcEncoder(Request.class))
-                                    .addLast(new RpcDecoder(Response.class))
+                                    .addLast(new LengthFieldBasedFrameDecoder(10240, 0, 4, 0, 4))
+                                    .addLast(new RpcEncoder(Response.class))
+                                    .addLast(new RpcDecoder(Request.class))
                                     .addLast(new RemoteServerHandler(beanMap));
                         }
                     })
@@ -117,11 +114,20 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             String[] address = serverAddress.split(":");
-            ChannelFuture future = bootstrap.bind(address[0], Integer.parseInt(address[1]));
+            ChannelFuture future = null;
+            try {
+                future = bootstrap.bind(address[0], Integer.parseInt(address[1])).sync();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if (serviceRegistry != null) {
                 serviceRegistry.registry(serverAddress);
             }
-            future.channel().closeFuture().sync();
+//            try {
+//                future.channel().closeFuture().sync();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 }
