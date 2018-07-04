@@ -131,30 +131,30 @@ public class RemoteFuture implements Future<Object> {
      */
     static class Sync extends AbstractQueuedSynchronizer {
 
-        private final int done = 1;
-        private final int await = 0;
-
         @Override
-        protected boolean tryAcquire(int arg) {
-            return getState() == done;
+        protected boolean tryAcquire(int acquire) {
+            assert acquire == 1;
+            if (compareAndSetState(0, 1)) {
+                setExclusiveOwnerThread(Thread.currentThread());
+                return true;
+            }
+            return false;
         }
 
         @Override
-        protected boolean tryRelease(int arg) {
-            if (getState() == await) {
-                if (compareAndSetState(await, done)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return true;
+        protected boolean tryRelease(int releases) {
+            assert releases == 1;
+            if (getState() == 0) {
+                throw new IllegalMonitorStateException();
             }
+            setExclusiveOwnerThread(null);
+            setState(0);
+            return true;
         }
 
         public boolean isDone() {
             getState();
-            return getState() == done;
+            return getState() == 1;
         }
     }
 }
