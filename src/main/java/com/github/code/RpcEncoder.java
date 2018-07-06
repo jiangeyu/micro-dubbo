@@ -8,7 +8,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 上午10:20 2018/6/30
- * @desc
+ * @desc request编码器
  */
 public class RpcEncoder extends MessageToByteEncoder {
 

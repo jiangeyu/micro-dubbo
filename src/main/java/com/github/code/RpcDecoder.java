@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 上午10:26 2018/6/30
- * @desc
+ * @desc request解码器
  */
 public class RpcDecoder extends ByteToMessageDecoder {
 
