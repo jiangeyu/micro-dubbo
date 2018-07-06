@@ -93,6 +93,10 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
         return this;
     }
 
+    /**
+     * 启动服务
+     *
+     */
     public void start() {
         if (bossGroup == null && workGroup == null) {
             bossGroup = new NioEventLoopGroup();

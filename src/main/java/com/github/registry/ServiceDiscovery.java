@@ -38,6 +38,11 @@ public class ServiceDiscovery {
         }
     }
 
+    /**
+     * 连接服务
+     *
+     * @return
+     */
     public ZooKeeper connectServer() {
         ZooKeeper zooKeeper = null;
         try {
@@ -55,6 +60,11 @@ public class ServiceDiscovery {
         return zooKeeper;
     }
 
+    /**
+     * 观察zk变化
+     *
+     * @param zk
+     */
     public void watchNode(ZooKeeper zk) {
         try {
             List<String> nodeList = zk.getChildren(RegistryConstants.ZK_REGISTRY_PATH, new Watcher() {
