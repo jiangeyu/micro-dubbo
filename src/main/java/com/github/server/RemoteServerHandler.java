@@ -21,6 +21,10 @@ import java.util.Map;
 @Slf4j
 public class RemoteServerHandler extends SimpleChannelInboundHandler<Request> {
 
+    /**
+     * 实现的服务类map
+     *
+     */
     private final Map<String, Object> serviceBeanMap;
 
     public RemoteServerHandler(Map<String, Object> handlerMap) {
@@ -46,6 +50,14 @@ public class RemoteServerHandler extends SimpleChannelInboundHandler<Request> {
         });
     }
 
+
+    /**
+     * 创建注册的服务类，使用cglib方式
+     *
+     * @param request
+     * @return
+     * @throws Throwable
+     */
     private Object handleCglib(Request request) throws Throwable {
         String className = request.getClassName();
         Object serviceBean = serviceBeanMap.get(className);
@@ -62,6 +74,13 @@ public class RemoteServerHandler extends SimpleChannelInboundHandler<Request> {
 
     }
 
+    /**
+     * 创建注册的服务类，使用jdk动态代理方式
+     *
+     * @param request
+     * @return
+     * @throws Throwable
+     */
     private Object handleJdk(Request request) throws Throwable {
         String className = request.getClassName();
         Object serviceBean = serviceBeanMap.get(className);
