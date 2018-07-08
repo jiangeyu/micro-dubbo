@@ -127,11 +127,11 @@ public class RemoteServer implements ApplicationContextAware, InitializingBean {
             if (serviceRegistry != null) {
                 serviceRegistry.registry(serverAddress);
             }
-//            try {
-//                future.channel().closeFuture().sync();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                future.channel().closeFuture().sync();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
