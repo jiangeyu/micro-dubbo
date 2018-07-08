@@ -136,6 +136,10 @@ public class ConnectionManager {
         });
     }
 
+    /**
+     * 缓存获取的handler
+     * @param handler
+     */
     private void addHandler(RemoteClientHandler handler) {
         connectHandlers.add(handler);
         InetSocketAddress address = (InetSocketAddress) handler.getChannel().remoteAddress();
@@ -161,6 +165,10 @@ public class ConnectionManager {
         }
     }
 
+    /**
+     * 获取可用的handler
+     * @return
+     */
     public RemoteClientHandler chooseHandler() {
         int size = connectHandlers.size();
         while (isRunning && size <= 0) {
@@ -177,6 +185,9 @@ public class ConnectionManager {
         return connectHandlers.get(index);
     }
 
+    /**
+     * 关闭handler
+     */
     public void stop() {
         isRunning = false;
         connectHandlers.stream().forEach( handler -> handler.close());
