@@ -48,6 +48,10 @@ public class ConnectionManager {
 
     private volatile boolean isRunning = true;
 
+    /**
+     * 获取线程安全的单例连接管理器
+     * @return
+     */
     public static ConnectionManager getInstance() {
         if (connectionManager == null) {
             synchronized (ConnectionManager.class) {
@@ -57,6 +61,10 @@ public class ConnectionManager {
         return connectionManager;
     }
 
+    /**
+     * 连接服务
+     * @param allServerAddress
+     */
     public void updateConnectServer(List<String> allServerAddress) {
         if (allServerAddress != null && allServerAddress.size() > 0) {
             Set<InetSocketAddress> nodeSet = allServerAddress.stream()
@@ -106,6 +114,10 @@ public class ConnectionManager {
         connectServerNode((InetSocketAddress) remotePeer);
     }
 
+    /**
+     * 发起netty连接
+     * @param address
+     */
     public void connectServerNode(InetSocketAddress address) {
         threadPoolExecutor.submit(() -> {
             Bootstrap bootstrap = new Bootstrap();
