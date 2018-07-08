@@ -20,6 +20,14 @@ public class RpcDecoder extends ByteToMessageDecoder {
         this.clazz = clazz;
     }
 
+    /**
+     * 解码字节码
+     *
+     * @param ctx
+     * @param in
+     * @param out
+     * @throws Exception
+     */
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         if (in.readableBytes() < 4) {

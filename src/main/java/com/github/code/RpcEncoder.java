@@ -18,6 +18,14 @@ public class RpcEncoder extends MessageToByteEncoder {
         this.clazz = clazz;
     }
 
+    /**
+     * 编码字节码
+     *
+     * @param ctx
+     * @param in
+     * @param out
+     * @throws Exception
+     */
     @Override
     protected void encode(ChannelHandlerContext ctx, Object in, ByteBuf out) throws Exception {
         if(clazz.isInstance(in)) {

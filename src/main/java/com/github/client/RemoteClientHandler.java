@@ -57,6 +57,12 @@ public class RemoteClientHandler extends SimpleChannelInboundHandler<Response> {
         channel.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
+    /**
+     * 客户端发起请求
+     *
+     * @param request
+     * @return
+     */
     public RemoteFuture sendRequest(Request request) {
         final CountDownLatch latch = new CountDownLatch(1);
         RemoteFuture future = new RemoteFuture(request);

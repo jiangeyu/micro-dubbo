@@ -33,6 +33,15 @@ public class ObjectProxy<T> implements AsyncObjectProxy, InvocationHandler {
         return future;
     }
 
+    /**
+     * 远程代理调用：获取可用的handler,发起netty请求，异步获取执行结果
+     *
+     * @param proxy
+     * @param method
+     * @param args
+     * @return
+     * @throws Throwable
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         if(Object.class == method.getDeclaringClass()) {
