@@ -25,9 +25,9 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class ServiceTest {
 
     @Autowired
-     private RemoteClient rpcClient;
+    private RemoteClient rpcClient;
     @Autowired
-     private RemoteServer remoteServer;
+    private RemoteServer remoteServer;
 
 
     @Test
@@ -64,9 +64,9 @@ public class ServiceTest {
     }
 
     @Test
-    public void helloFutureTest1() throws ExecutionException, InterruptedException {
+    public void helloFutureTest1() {
         remoteServer.start();
-        remoteServer.addService("hello", "world");
+        System.out.println(remoteServer.getBeanMap().toString());
         AsyncObjectProxy helloService = rpcClient.createAsyns(HelloService.class);
         RemoteFuture result = helloService.call("hello", "World");
         System.out.println(result.get());

@@ -3,7 +3,6 @@ package com.github.registry;
 import com.github.constant.RegistryConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
@@ -67,12 +66,9 @@ public class ServiceDiscovery {
      */
     public void watchNode(ZooKeeper zk) {
         try {
-            List<String> nodeList = zk.getChildren(RegistryConstants.ZK_REGISTRY_PATH, new Watcher() {
-                @Override
-                public void process(WatchedEvent event) {
-                    if (event.getType() == Event.EventType.NodeChildrenChanged) {
-                        watchNode(zk);
-                    }
+            List<String> nodeList = zk.getChildren(RegistryConstants.ZK_REGISTRY_PATH, event -> {
+                if (event.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
+                    watchNode(zk);
                 }
             });
             List<String> dataList = nodeList.stream().map(data -> {
